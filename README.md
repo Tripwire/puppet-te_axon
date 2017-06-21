@@ -83,6 +83,8 @@ class { 'te_axon':
 
 ## Reference
 
+Available at https://tripwire.github.io/puppet-te_axon/
+
 The full reference documentation can be generated with Puppet Strings:
 
 ```
