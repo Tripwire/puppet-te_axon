@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Puppet Class: te_axon
+  
+    &mdash; Documentation by YARD 0.9.9
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "puppet_classes::te_axon";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../puppet_class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (t)</a> &raquo;
+    <span class='title'><span class='object_link'>Puppet Classes</span></span>
+     &raquo; 
+    <span class="title">te_axon</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="puppet_class_list_link"
+        href="../puppet_class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Puppet Class: te_axon</h1>
+<div class="box_info">
+  
+  
+  <dl>
+    <dt>Inherited by:</dt>
+    <dd>
+      
+      <span class='object_link'><a href="te_axon_3A_3Aconfig.html" title="puppet_classes::te_axon::config (puppet_class)">te_axon::config</a></span><br/>
+      
+      <span class='object_link'><a href="te_axon_3A_3Ainstall.html" title="puppet_classes::te_axon::install (puppet_class)">te_axon::install</a></span><br/>
+      
+      <span class='object_link'><a href="te_axon_3A_3Aservice.html" title="puppet_classes::te_axon::service (puppet_class)">te_axon::service</a></span><br/>
+      
+    </dd>
+  </dl>
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>
+      manifests/init.pp
+    </dd>
+  </dl>
+</div>
+
+  <h2>Summary</h2>
+  The te_axon class installs, configures, and manages the services of the
+Tripwire Axon Agent.
+
+<h2>Overview</h2>
+<div class="docstring">
+  <div class="discussion">
+    
+<p>Main class. Contains all private classes.</p>
+
+<p>@ api public</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Minimal configuration</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;te_axon&#39;:
+  package_source =&gt; &#39;http://files.example.com/tripwire/Axon_Agent_x64.msi&#39;
+}</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Bridge options</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;te_axon&#39;:
+  package_source   =&gt; &#39;http://files.example.com/tripwire/Axon_Agent_x64.msi&#39;,
+  bridge_host      =&gt; &#39;teconsole.example.com&#39;
+  registration_key =&gt; &#39;correct horse battery staple&#39;
+}</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Linux Event Generator packages</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;te_axon&#39;:
+  package_source            =&gt; &#39;http://files.example.com/tripwire/axon-agent-installer-linux-x64.rpm&#39;,
+  package_rtm_source        =&gt; &#39;http://files.example.com/tripwire/tw-eg-service-x86_64.rpm&#39;,
+  package_rtm_driver_name   =&gt; &#39;tw-eg-driver-rhel&#39;,
+  package_rtm_driver_source =&gt; &#39;http://files.example.com/tripwire/tw-eg-driver-rhel-x86_64.rpm&#39;
+}</code></pre>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Custom tag sets</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;te_axon&#39;:
+  ...
+  tags =&gt; {
+    &#39;tagset_1&#39; =&gt; &#39;tag1&#39;,
+    &#39;tagset_2&#39; =&gt; [&#39;tag2a&#39;, &#39;tag2b&#39;],
+  },
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>package_manage</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to manage the Axon Agent package. Default: <code>true</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_ensure</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to install the Axon Agent package. Default: <code>installed</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_install_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Path to install the Axon Agent package. Default: varies by operating system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_source</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The path to the Axon Agent installer. <strong>Required</strong></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the Axon Agent package. Default: varies by operating system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_provider</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Which package provider to use to manage the Axon Agent package. Default:
+<code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_rtm_manage</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to manage the Event Generator service. Does not apply to Windows.
+Default: <code>true</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_rtm_ensure</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to install the Event Generator service. Default:
+<code>installed</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_rtm_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the Event Generator service package. Default: varies by
+operating system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_rtm_source</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The path to the Event Generator service package. <strong>Required</strong>
+if package_rtm_manage is <code>true</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_rtm_driver_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the Event Generator driver. Default: varies by operating system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>package_rtm_driver_source</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The path to the Event Generator driver package. <strong>Required</strong>
+if package_rtm_manage is <code>true</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>config_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Path to write Axon Agent configuration files. Default: varies by operating
+system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dns_srvc_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>DNS service name to look up. Default: <code>_tw-agw</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dns_srvc_domain</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A specific domain to use when looking up the DNS SRV record. Default:
+<code>undef</code>. The agent will use the domain of the IP addresses
+assigned to the host.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bridge_host</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A specific agent bridge host to connect to. Default: <code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bridge_port</span>
+      
+      
+        <span class='type'>(<tt>Integer[0, 65535]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A specific agent bridge port to connect to. Default: <code>5670</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>registration_filename</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>File to write the registration pre-shared key. Default:
+<code>registration_pre_shared_key.txt</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>registration_key</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Registration pre-shared key. Should be the same as the one specified in the
+Axon Bridge <code>bridge.properties</code> file. Default:
+<code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>proxy_hostname</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hostname for a SOCKS 5 proxy server to connect through. Default:
+<code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>proxy_port</span>
+      
+      
+        <span class='type'>(<tt>Optional[Integer[0, 65535]]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Port for a SOCKS 5 proxy server to connect through. Default:
+<code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>proxy_username</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Username for a SOCKS 5 proxy server to connect through. Default:
+<code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>proxy_password</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Password for a SOCKS 5 proxy server to connect through. Default:
+<code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>tls_version</span>
+      
+      
+        <span class='type'>(<tt>Optional[Enum['TLSv1', 'TLSv1.1', 'TLSv1.2']]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Use a specific TLS version when connecting. Default: <code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>tls_cipher_suites</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Use a specific set of TLS cipher suites when connecting. Valid values are
+FIPS-compatible OpenSSL cipher suites which utilize an RSA key. Default:
+<code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>logger_level</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Can be set to <code>DEBUG</code> to enable debug logging from the agent.
+Default: <code>undef</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>spool_size</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The maximum size of the agent spool. Default: <code>1g</code> (1 gigabyte)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>tags</span>
+      
+      
+        <span class='type'>(<tt>Optional[Hash]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Tags to automatically apply to the node when registered. Format is a Hash
+of tag set names to tag values, or an array of tag values. Optional.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_enable</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to enable the Axon Agent service to start at boot. Default:
+<code>true</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_ensure</span>
+      
+      
+        <span class='type'>(<tt>Enum['running', 'stopped']</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the Axon Agent service should be running. Default:
+<code>running</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_manage</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to manage the Axon Agent service. Default: <code>true</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The Axon Agent service name to manage. Default value: varies by operating
+system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_provider</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Which service provider to use for the Axon Agent service. Default:
+<code>undef</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_rtm_enable</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to enable the Event Generator service to start at boot. Default:
+<code>true</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_rtm_ensure</span>
+      
+      
+        <span class='type'>(<tt>Enum['running', 'stopped']</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the Event Generator service should be running. Default:
+<code>running</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_rtm_manage</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether to manage the Event Generator service. Should only be used if
+<code>install_rtm</code> is <code>true</code>. Default: <code>true</code></p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_rtm_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The Event Generator service name to manage. Default: varies by operating
+system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>service_rtm_provider</span>
+      
+      
+        <span class='type'>(<tt>Optional[String]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Which service provider to use for the Event Generator service. Default:
+<code>undef</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><div class="method_details_list">
+  <table class="source_code">
+    <tr>
+      <td>
+        <pre class="lines">
+
+
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128</pre>
+      </td>
+      <td>
+        <pre class="code"><span class="info file"># File 'manifests/init.pp', line 80</span>
+
+class te_axon (
+  Boolean $package_manage,
+  String $package_ensure,
+  String $package_install_path,
+  String $package_source,
+  String $package_name,
+  Optional[String] $package_provider,
+  Boolean $package_rtm_manage,
+  String $package_rtm_ensure,
+  String $package_rtm_name,
+  Optional[String] $package_rtm_source,
+  String $package_rtm_driver_name,
+  Optional[String] $package_rtm_driver_source,
+  String $config_path,
+  String $dns_srvc_name,
+  Optional[String] $dns_srvc_domain,
+  Optional[String] $bridge_host,
+  Integer[0, 65535] $bridge_port,
+  String $registration_filename,
+  Optional[String] $registration_key,
+  Optional[String] $proxy_hostname,
+  Optional[Integer[0, 65535]] $proxy_port,
+  Optional[String] $proxy_username,
+  Optional[String] $proxy_password,
+  Optional[Enum[&#39;TLSv1&#39;, &#39;TLSv1.1&#39;, &#39;TLSv1.2&#39;]] $tls_version,
+  Optional[String] $tls_cipher_suites,
+  Optional[String] $logger_level,
+  String $spool_size,
+  Optional[Hash] $tags,
+  Boolean $service_enable,
+  Enum[&#39;running&#39;, &#39;stopped&#39;] $service_ensure,
+  Boolean $service_manage,
+  String $service_name,
+  Optional[String] $service_provider,
+  Boolean $service_rtm_enable,
+  Enum[&#39;running&#39;, &#39;stopped&#39;] $service_rtm_ensure,
+  Boolean $service_rtm_manage,
+  String $service_rtm_name,
+  Optional[String] $service_rtm_provider,
+) {
+
+  contain te_axon::install
+  contain te_axon::config
+  contain te_axon::service
+
+  Class[&#39;::te_axon::install&#39;]
+  -&gt; Class[&#39;::te_axon::config&#39;]
+  ~&gt; Class[&#39;::te_axon::service&#39;]
+}</pre>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+
+      <div id="footer">
+  Generated on Wed Jun 21 16:13:50 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.9 (ruby-2.4.1).
+</div>
+
+    </div>
+  </body>
+</html>
