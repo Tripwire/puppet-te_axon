@@ -1,0 +1,46 @@
+# Axon Agent configuration file
+# Managed by Puppet. DO NOT EDIT!
+
+# DNS SRV record options
+dns.service.name=<%= $te_axon::dns_srvc_name %>
+<% if $te_axon::dns_srvc_domain { -%>
+dns.service.domain=<%= $te_axon::dns_srvc_domain %>
+<% } -%>
+<% if $te_axon::bridge_host { -%>
+
+# Host-based agent configuration
+bridge.host=<%= $te_axon::bridge_host %>
+bridge.port=<%= $te_axon::bridge_port %>
+<% } -%>
+<% if $te_axon::registration_key { -%>
+
+# Bridge registration pre-shared key
+bridge.auth.mode=registration
+registration.file.name=<%= $te_axon::registration_filename %>
+<% } -%>
+<% if $te_axon::proxy_hostname { -%>
+
+# Proxy settings
+socks5.host=<%= $te_axon::proxy_hostname %>
+socks5.port=<%= $te_axon::proxy_port %>
+socks5.user.name=<%= $te_axon::proxy_username %>
+socks5.user.password=<%= $te_axon::proxy_password %>
+<% } -%>
+<% if $te_axon::tls_version { -%>
+
+# TLS version
+tls.version=<%= $te_axon::tls_version %>
+<% } -%>
+<% if $te_axon::tls_cipher_suites { -%>
+
+# TLS cipher suites
+tls.cipher.suites=<%= $te_axon::tls_cipher_suites %>
+<% } -%>
+
+# The maximum size of the agent spool
+spool.size.max=<%= $te_axon::spool_size %>
+<% if $te_axon::logger_level { -%>
+
+# Debugging - twagent
+log4cplus.logger.twagent=<%= $te_axon::logger_level %>
+<% } -%>

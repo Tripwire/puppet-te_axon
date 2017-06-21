@@ -1,0 +1,8 @@
+---
+te_axon::package_name: 'Axon Agent'
+te_axon::package_provider: windows
+te_axon::install_path: 'C:\Program Files\Tripwire\Agent'
+te_axon::config_path: 'C:\ProgramData\Tripwire\Agent\config'
+te_axon::service_name: TripwireAxonAgent
+te_axon::service_rtm_name: TripwireEventGeneratorService
+te_axon::package_rtm_manage: false

@@ -1,0 +1,30 @@
+{
+  "name": "tripwire-te_axon",
+  "version": "0.2.0",
+  "author": "Tripwire, Inc.",
+  "summary": "The te_axon class installs, configures, and manages the services of the Tripwire Axon Agent.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/Tripwire/puppet-te_axon",
+  "project_page": "https://github.com/Tripwire/puppet-te_axon",
+  "issues_url": "https://github.com/Tripwire/puppet-te_axon/issues",
+  "tags": ["tripwire", "tripwire-enterprise", "axon", "security", "agent", "monitoring" ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat"
+    },
+    {
+      "operatingsystem": "CentOS"
+    },
+    {
+      "operatingsystem": "Windows"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.9.0 < 5.0.0"
+    }
+  ],
+  "dependencies": [],
+  "data_provider": null
+}
